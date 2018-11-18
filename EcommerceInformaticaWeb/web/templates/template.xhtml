@@ -16,14 +16,13 @@
             <h:form id="formMenu">
                 <b:navBar brand="EcommerceInformatica">
                     <b:navbarLinks>
-                        <b:navLink value="Inicio"/>
-                        <b:navLink value="Logar"/>
+                        <b:navLink value="Inicio" outcome="Inicio"/>
+                        <b:navLink value="Login" outcome="Login"/>
                         <b:dropMenu value="Privado">
-                            <b:navCommandLink value="Pessoas" ajax="false" action="#{controleSetor.listar()}"/>
-                            <b:navCommandLink value="Perfil" ajax="false" action="#{controleUsuario.listar()}"/>
+                            <b:navCommandLink value="Pessoas" ajax="false" action="#{controlePessoa.listar()}"/>
                         </b:dropMenu>
                         <b:dropMenu value="Publico">
-                            <b:navCommandLink value="Produtos" ajax="false" action="#{controleSetor.listar()}"/>              
+                            <b:navCommandLink value="Produtos" ajax="false" action="#{controleProduto.listar()}"/>              
                         </b:dropMenu>
                     </b:navbarLinks>
                 </b:navBar>
@@ -33,6 +32,12 @@
                
             </ui:insert>
         </b:container>
+        <div align="center" 
+                     style="font-size: 20px; color: white; text-transform: uppercase;"> 
+                    <ui:include src="ajaxstatus.xhtml"/>
+
+                    Todos os Direitos Reservados
+        </div>
     </h:body>
         
   <!--</f:view> -->

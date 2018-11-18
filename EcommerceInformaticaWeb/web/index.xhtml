@@ -2,16 +2,57 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-    
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
     <ui:composition template="/templates/template.xhtml">
         <ui:define name="titulo">Publico</ui:define>
         <ui:define name="conteudo">
-            <h1>Seja bem vindo ao Sistema EcommerceInformatica!!!!</h1>
-        <br/>
-        
+                <h:form>
+                    <p:dataGrid var="prod" value="#{controleProduto.dao.listaTodos}"
+                                columns="4" layout="grid">
+                        <h1>Seja bem vindo ao Sistema EcommerceInformatica!!!!</h1>
+                        <br/>
+                        <p:messages id="msgs"/>
+                        <br/>
+                        <p:panel style="text-align: center" header="#{prod.nome}">
+                            <h:panelGrid columns="1" style="width: 100%">
+                                <h:outputText value="#{prod.marca}"/>
+                                <h:outputText value="#{prod.descricao}"/>
+                                
+                                <h:panelGroup rendered="#{prod.promocao==null}">
+                                    <h:outputText style="font-weight:bolder;" value="Preço Normal: #{prod.valor}">
+                                        <f:convertNumber pattern="R$ 0.00"/>
+                                    </h:outputText>
+                                </h:panelGroup>
+                                
+                                <h:panelGroup rendered="#{prod.promocao!=null}">
+                                    <h:outputText style="text-decoration: underline;color: lightgray" value="Preço Normal: #{prod.valor}">
+                                        <f:convertNumber pattern="R$ 0.00"/>
+                                    </h:outputText>
+
+                                    <h:outputText style="font-weight:bolder;" value="Preço Promoção: #{prod.promocao}">
+                                        <f:convertNumber pattern="R$ 0.00"/>
+                                    </h:outputText>
+                                </h:panelGroup>
+                                <h:outputText value="#{prod.peso}"/>
+
+                                <h:outputText value="Estoque:#{prod.estoque>0? prod.estoque:'Indisponivel!!!'}"/>
+
+                                <p:commandButton icon="ui-icon-cart"
+                                                 title="Adicionar ao Carrinho"
+                                                 update=":formMenu @form msgs"
+                                                 process="@form"
+                                                 rendered="#{prod.estoque>0}"/>
+                            </h:panelGrid>
+
+                        </p:panel>
+
+                    </p:dataGrid>
+                </h:form>
         </ui:define>
     </ui:composition>
-    
+
 </html>
 
