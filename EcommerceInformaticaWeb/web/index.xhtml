@@ -10,33 +10,34 @@
         <ui:define name="titulo">Publico</ui:define>
         <ui:define name="conteudo">
                 <h:form>
+                    <h1>Seja bem vindo ao Sistema EcommerceInformatica!!!!</h1>
                     <p:dataGrid var="prod" value="#{controleProduto.dao.listaTodos}"
                                 columns="4" layout="grid">
-                        <h1>Seja bem vindo ao Sistema EcommerceInformatica!!!!</h1>
+                        
                         <br/>
                         <p:messages id="msgs"/>
                         <br/>
-                        <p:panel style="text-align: center" header="#{prod.nome}">
+                        <p:panel style="text-align: center" header="">
                             <h:panelGrid columns="1" style="width: 100%">
                                 <h:outputText value="#{prod.marca}"/>
                                 <h:outputText value="#{prod.descricao}"/>
                                 
                                 <h:panelGroup rendered="#{prod.promocao==null}">
-                                    <h:outputText style="font-weight:bolder;" value="Preço Normal: #{prod.valor}">
+                                    <h:outputText style="font-weight:bolder;" value="Valor Normal: #{prod.valor}">
                                         <f:convertNumber pattern="R$ 0.00"/>
                                     </h:outputText>
                                 </h:panelGroup>
                                 
                                 <h:panelGroup rendered="#{prod.promocao!=null}">
-                                    <h:outputText style="text-decoration: underline;color: lightgray" value="Preço Normal: #{prod.valor}">
+                                    <h:outputText style="text-decoration: line-through ;color: lightgray" value="Valor Normal: #{prod.valor}">
                                         <f:convertNumber pattern="R$ 0.00"/>
                                     </h:outputText>
-
-                                    <h:outputText style="font-weight:bolder;" value="Preço Promoção: #{prod.promocao}">
+                                    <br/>
+                                    <h:outputText style="font-weight:bolder;" value="Promoção: #{prod.promocao}">
                                         <f:convertNumber pattern="R$ 0.00"/>
                                     </h:outputText>
                                 </h:panelGroup>
-                                <h:outputText value="#{prod.peso}"/>
+                                <h:outputText value="Peso: #{prod.peso}"/>
 
                                 <h:outputText value="Estoque:#{prod.estoque>0? prod.estoque:'Indisponivel!!!'}"/>
                             </h:panelGrid>

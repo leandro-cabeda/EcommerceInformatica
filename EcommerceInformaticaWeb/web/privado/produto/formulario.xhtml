@@ -16,27 +16,27 @@
                     <p:inputText value="#{controleProduto.objeto.id}"
                                  readonly="true" size="5"/>
                     
-                    <p:outputLabel value="Nome" for="txtNome"/>
-                    <p:inputText value="#{controleProduto.objeto.nome}"
+                    <p:outputLabel value="Descrição" for="txtDescricao"/>
+                    <p:inputText value="#{controleProduto.objeto.descricao}"
                                  required="true"
-                                  id="txtNome" size="40" maxlength="40"
+                                  id="txtDescricao" size="50" maxlength="50"
                                   />
                     
                     <p:outputLabel value="Marca" for="txtMarca"/>
                     <p:inputText value="#{controleProduto.objeto.marca}"
                                  required="true"
-                                  id="txtNome" size="40" maxlength="40"
+                                  id="txtNome" size="50" maxlength="50"
                                   />
                     
-                    <p:outputLabel value="Preço" for="txtPreco"/>
-                    <p:inputNumber value="#{controleProduto.objeto.preco}"
+                    <p:outputLabel value="Valor" for="txtValor"/>
+                    <p:inputNumber value="#{controleProduto.objeto.valor}"
                                    decimalPlaces="2" decimalSeparator="." required="true"
                                                    thousandSeparator=""
-                                            id="txtPreco">
+                                            id="txtValor">
                     </p:inputNumber>
                     
                     <p:outputLabel value="Promoção" for="txtPromocao"/>
-                    <p:inputNumber value="#{controleProduto.objeto.preco}"
+                    <p:inputNumber value="#{controleProduto.objeto.promocao}"
                                    decimalPlaces="2" decimalSeparator="."
                                                    thousandSeparator=""
                                             id="txtPromocao">
@@ -47,6 +47,13 @@
                                    size="10" maxlength="10" decimalPlaces="0"
                                    required="true"
                                             id="txtEstoque"/>
+                    
+                    <p:outputLabel value="Peso" for="txtPeso"/>
+                    <p:inputNumber value="#{controleProduto.objeto.peso}"
+                                   decimalPlaces="2" decimalSeparator="."
+                                                   thousandSeparator=""
+                                            id="txtPeso">
+                    </p:inputNumber>
                     
                     <p:commandButton value="Salvar" icon="ui-icon-disk"
                                      actionListener="#{controleProduto.salvar()}"

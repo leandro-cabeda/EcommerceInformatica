@@ -15,15 +15,15 @@
                     <p:commandButton value="Novo" icon="ui-icon-plus" actionListener="#{controleProduto.novo()}"
                                      update="formListagem formEdicao"/>
                     
-                    <p:dataTable value="#{controleProduto.dao}" var="obj" reflow="true">
+                    <p:dataTable value="#{controleProduto.dao.listaTodos}" var="obj" reflow="true">
                         <p:column headerText="ID">
                             <p:outputLabel value="#{obj.id}"/>
                         </p:column>
-                        <p:column headerText="Nome">
-                            <p:outputLabel value="#{obj.nome}"/>
+                        <p:column headerText="Descrição">
+                            <p:outputLabel value="#{obj.descricao}"/>
                         </p:column>
-                        <p:column headerText="Preço">
-                            <p:outputLabel value="#{obj.preco}"/>
+                        <p:column headerText="Valor">
+                            <p:outputLabel value="#{obj.valor}"/>
                         </p:column>
                         <p:column headerText="Estoque">
                             <p:outputLabel value="#{obj.estoque}"/>
@@ -31,6 +31,10 @@
                         
                         <p:column headerText="Marca">
                             <p:outputLabel value="#{obj.marca}"/>
+                        </p:column>
+                        
+                        <p:column headerText="Peso">
+                            <p:outputLabel value="#{obj.peso}"/>
                         </p:column>
                         
                         <p:column headerText="Promoção" rendered="#{obj.promocao!=null}">
