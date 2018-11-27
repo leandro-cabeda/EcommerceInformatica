@@ -23,7 +23,7 @@ import util.Util;
 @SessionScoped
 public class ControleLogin  implements Serializable{
     
-    private Pessoa pessoaAutenticado;
+   private Pessoa pessoaAutenticado;
     
     @EJB
     private PessoaDAO<Pessoa> dao;
@@ -89,15 +89,13 @@ public class ControleLogin  implements Serializable{
         }
         
     }
-    
-    
 
-    public Pessoa getUsuarioAutenticado() {
+    public Pessoa getPessoaAutenticado() {
         return pessoaAutenticado;
     }
 
-    public void setUsuarioAutenticado(Pessoa usuarioAutenticado) {
-        this.pessoaAutenticado = usuarioAutenticado;
+    public void setPessoaAutenticado(Pessoa pessoaAutenticado) {
+        this.pessoaAutenticado = pessoaAutenticado;
     }
 
     public PessoaDAO<Pessoa> getDao() {
@@ -123,4 +121,6 @@ public class ControleLogin  implements Serializable{
     public void setSenha(String senha) {
         this.senha = senha;
     }
+    
+    
 }

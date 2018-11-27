@@ -17,12 +17,11 @@
                 <b:navBar brand="EcommerceInformatica">
                     <b:navbarLinks>
                         <b:navLink value="Inicio" outcome="Inicio"/>
-                        <b:dropMenu value="Privado" rendered="#{p:ifGranted('ADMINISTRADOR','FUNCIONARIO','GERENTE')}">
-                            <b:dropMenu value="Cadastros" rendered="#{controleLogin.pessoaAutenticado!=null}
-                                        ">
-                                <b:navCommandLink value="Pessoas" ajax="false" action="#{controlePessoa.listar()}"/>
-                                <b:navCommandLink value="Produtos" ajax="false" action="#{controleProduto.listar()}"/>
-                            </b:dropMenu>
+                        <b:dropMenu value="Privado" rendered="#{controleLogin.pessoaAutenticado.perfis.containsAll('FUNCIONARIO','GERENTE','ADMINISTRADOR')
+                                                                and controleLogin.pessoaAutenticado!=null }">
+                            <b:navCommandLink value="Pessoas" ajax="false" action="#{controlePessoa.listar()}"/>
+                            <b:navCommandLink value="Produtos" ajax="false" action="#{controleProduto.listar()}"/>
+
                         </b:dropMenu>
                         <b:dropMenu value="Publico">
                             <b:navCommandLink value="Produtos" ajax="false" action="#{controleProduto.listar()}"/>              
