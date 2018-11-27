@@ -39,12 +39,6 @@
                                 <h:outputText value="#{prod.peso}"/>
 
                                 <h:outputText value="Estoque:#{prod.estoque>0? prod.estoque:'Indisponivel!!!'}"/>
-
-                                <p:commandButton icon="ui-icon-cart"
-                                                 title="Adicionar ao Carrinho"
-                                                 update=":formMenu @form msgs"
-                                                 process="@form"
-                                                 rendered="#{prod.estoque>0}"/>
                             </h:panelGrid>
 
                         </p:panel>

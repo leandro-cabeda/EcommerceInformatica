@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      >
+
+    <h:form id="formEdicao">
+        <h:panelGroup rendered="#{controlePessoa.editando}">
+            <div class="ui-fluid">
+                <p:messages id="msgs"/>
+                <p:panelGrid columns="2" columnClasses="ui-grid-col-2, ui-grid-col-20" layout="grid" styleClass="ui-panelgrid-blank">
+                    <f:facet name="header">
+                        <p:outputLabel value="Edição de Pessoas"/>
+                    </f:facet>
+                    <p:outputLabel value="NomePessoa" for="txtNomePessoa"/>
+                    <p:inputText value="#{controlePessoa.objeto.nomePessoa}"
+                                 readonly="#{controlePessoa.edit}" id="txtNomePessoa" placeholder="obrigatorio" size="20" maxlength="20" 
+                                 >
+                        <p:ajax listener="#{controlePessoa.verificarUser()}"
+                                                process="@this"
+                                                update="@this msgs" event="blur"/>
+                    </p:inputText>
+
+                    <p:outputLabel value="Nome" for="txtNome"/>
+                    <p:inputText value="#{controlePessoa.objeto.nome}"
+                                 id="txtNome" placeholder="obrigatorio" size="50" maxlength="50"
+                                 />
+                    <p:outputLabel value="Email" for="txtEmail"/>
+                    <p:inputText value="#{controlePessoa.objeto.email}"
+                                 id="txtEmail" placeholder="obrigatorio"  size="50" maxlength="50"
+                                 
+                                 />
+                    <p:outputLabel value="Senha" for="txtSenha"/>
+                    <p:password value="#{controlePessoa.objeto.senha}"
+                                id="txtSenha" placeholder="obrigatorio" size="20" maxlength="20"
+                                redisplay="true" feedback="true" goodLabel="média"
+                                strongLabel="ótimo"
+                                weakLabel="fraco"
+                                />
+
+                    <p:commandButton value="Salvar" icon="ui-icon-disk"
+                                     actionListener="#{controlePessoa.salvar()}"
+                                     update="formEdicao formListagem"/>
+
+                </p:panelGrid>
+                
+                <h:panelGroup id="painelPerfil">
+                    <p:panelGrid columns="2" columnClasses="ui-grid-col-2, ui-grid-col-20" layout="grid" styleClass="ui-panelgrid-blank"
+                                 rendered="#{controlePessoa.editandoPerfil}" >
+                        <f:facet name="header">
+                            <p:outputLabel value="Edição de Permissão do usuário"/>
+                        </f:facet>
+                        <p:outputLabel value="Permissão" for="selectPerfil"/>
+                        <p:selectOneMenu id="selectPerfil" 
+                                         value="#{controlePessoa.perfil}" filter="true">
+                            <f:selectItem noSelectionOption="true" itemLabel="Selecione um registro"/>
+                            <f:selectItems value="#{controlePessoa.daoPerfil.listaTodos}" 
+                                           var="p" itemLabel="#{p.nome}"/>
+                            <f:converter converterId="converterPerfil"/>                                  
+                        </p:selectOneMenu>
+                        
+                        <p:commandButton value="Salvar Perfil" icon="ui-icon-disk"
+                                         actionListener="#{controlePessoa.salvarPerfil()}"
+                                         id="btnSalvarPerfil"
+                                         process="selectPerfil btnSalvarPerfil"
+                                         update="painelPerfil listagemPerfil msgs"/>
+                        
+                    </p:panelGrid>
+                </h:panelGroup>
+                
+            </div>
+        <br/>
+            
+             <h:panelGroup id="listagemPerfil">
+                    <h:panelGroup rendered="#{!controlePessoa.editandoPerfil}">
+                        <p:commandButton value="Nova Permissão"
+                                         icon="ui-icon-plus"
+                                         actionListener="#{controlePessoa.novaPerfil()}"
+                                         update="listagemPerfil painelPerfil"
+                                         process="@this"/>
+                        <p:dataTable value="#{controlePessoa.objeto.permissoes}"
+                                     var="per" reflow="true">
+                            <f:facet name="header">
+                                <p:outputLabel value="Perfis da pessoa"/>
+                            </f:facet>
+
+                            <p:column headerText="Perfil">
+                                <p:outputLabel value="#{per.nome}"/>
+                            </p:column>
+                            <p:column headerText="Descrição">
+                                <p:outputLabel value="#{per.descricao}"/>
+                            </p:column>
+                            <p:column headerText="Ações">
+                                <div align="center">
+                                    <p:commandButton icon="ui-icon-trash"
+                                                     actionListener="#{controlePessoa.removerPerfil(per)}"
+                                                     process="@this" update="@form"/>
+                                </div>
+                            </p:column>
+
+                        </p:dataTable>
+                    </h:panelGroup>
+                </h:panelGroup>
+        </h:panelGroup>
+    </h:form>
+
+</html>
+

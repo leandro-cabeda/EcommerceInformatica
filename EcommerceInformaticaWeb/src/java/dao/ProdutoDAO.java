@@ -7,8 +7,6 @@ package dao;
 
 import java.io.Serializable;
 import javax.ejb.Stateful;
-import javax.persistence.Query;
-import modelo.Pessoa;
 import modelo.Produto;
 
 /**
