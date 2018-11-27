@@ -7,6 +7,7 @@ package dao;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.annotation.security.RolesAllowed;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -30,16 +31,20 @@ public class DaoGenerico <TIPO> implements Serializable{
         
     }
     
+    @RolesAllowed({"ADMINISTRADOR","GERENTE","FUNCIONARIO"})
     public void persist(TIPO obj)throws Exception
     {
         em.persist(obj);
     }
     
+    @RolesAllowed({"ADMINISTRADOR","GERENTE"})
     public void merge(TIPO obj)throws Exception
     {
         em.merge(obj);
     }
     
+    // mais de uma @RolesAllowed({ADMINISTRADOR,"USUARIO"})
+    @RolesAllowed({"ADMINISTRADOR","GERENTE"})
     public void remove(TIPO obj)throws Exception
     {
         obj=em.merge(obj); // necessário para criar o vinculo com o banco novamente antes de remover

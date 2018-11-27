@@ -11,12 +11,6 @@
                 <from-outcome>Inicio</from-outcome>
                 <to-view-id>index.xhtml</to-view-id>
             </navigation-case>
-            
-            <navigation-case>
-                <from-outcome>Login</from-outcome>
-                <to-view-id>login.xhtml</to-view-id>
-            </navigation-case>
-        </navigation-rule>
         
         <locale-config>
             <default-locale>pt_BR</default-locale>

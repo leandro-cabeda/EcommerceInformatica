@@ -3,34 +3,31 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-          
+      
       xmlns:p="http://primefaces.org/ui">
     
     <ui:composition template="/templates/template.xhtml">
-        <ui:define name="titulo">Login Sistema</ui:define>
+        <ui:define name="titulo">Erro no Login</ui:define>
         <ui:define name="conteudo">
             <h:form>
+                <h1>Erro no Login!!!!</h1>
                 <p:messages/>
                 <div class="ui-fluid">
-                    <p:panel header="Login da Pessoa">
+                    <p:panel header="Erro">
                         <p:panelGrid columns="2" layout="grid" 
                                      columnClasses="ui-grid-col-2, ui-grid-col-5" 
                                      styleClass="ui-panelgrid-blank">
-                            
-                            <p:outputLabel value="Pessoa" for="txtPessoa"/>
-                            <p:inputText value="#{controleLogin.usuario}" id="txtPessoa" required="true"/>
-                            
-                            <p:outputLabel value="Senha" for="txtSenha"/>
-                            <p:password value="#{controleLogin.senha}" id="txtSenha" required="true"/>
+                          
                             <p:outputLabel value=""/>
-                            <p:commandButton value="Autenticar" action="#{controleLogin.efetuarLogin()}"
+                            <p:commandButton value="Voltar" action="#{controleLogin.voltar()}"
                                              ajax="false"/>
                             
                         </p:panelGrid>
                     </p:panel>
                 </div>
                 
-            </h:form>           
+            </h:form> 
+        
         </ui:define>
     </ui:composition>
     
