@@ -5,9 +5,9 @@
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    
+
     <!--<f:view encoding="ISO-8859-1" contentType="text/html" locale="#/{controleLocale.currentLocale}">  -->    
-    
+
     <h:head>
         <title><ui:insert name="titulo">EcommerceInformatica</ui:insert></title>
     </h:head>
@@ -17,42 +17,44 @@
                 <b:navBar brand="EcommerceInformatica">
                     <b:navbarLinks>
                         <b:navLink value="Inicio" outcome="Inicio"/>
-                        <b:dropMenu value="Privado" rendered="#{controleLogin.pessoaAutenticado!=null}
-                                    #{p:ifGranted('ADMINISTRADOR','FUNCIONARIO','GERENTE')}">
-                            <b:navCommandLink value="Pessoas" ajax="false" action="#{controlePessoa.listar()}"/>
-                            <b:navCommandLink value="Produtos" ajax="false" action="#{controleProduto.listar()}"/>
+                        <b:dropMenu value="Privado" rendered="#{p:ifGranted('ADMINISTRADOR','FUNCIONARIO','GERENTE')}">
+                            <b:dropMenu value="Cadastros" rendered="#{controleLogin.pessoaAutenticado!=null}
+                                        ">
+                                <b:navCommandLink value="Pessoas" ajax="false" action="#{controlePessoa.listar()}"/>
+                                <b:navCommandLink value="Produtos" ajax="false" action="#{controleProduto.listar()}"/>
+                            </b:dropMenu>
                         </b:dropMenu>
                         <b:dropMenu value="Publico">
                             <b:navCommandLink value="Produtos" ajax="false" action="#{controleProduto.listar()}"/>              
                         </b:dropMenu>
-                        
+
                         <b:dropMenu value="Pessoa: #{controleLogin.pessoaAutenticado!=null ? controleLogin.pessoaAutenticado.nome : 'Efetuar Login'}" >
-                            
+
                             <b:navCommandLink value="Efetuar Login" action="#{controleLogin.irPaginaLogin()}"
                                               rendered="#{controleLogin.pessoaAutenticado == null}" ajax="false"/>
-                            
+
                             <b:navCommandLink value="Efetuar Logout"
                                               action="#{controleLogin.efetuarLogout()}"
                                               ajax="false"
                                               rendered="#{controleLogin.pessoaAutenticado != null}" />
-                        
+
                         </b:dropMenu>
                     </b:navbarLinks>
                 </b:navBar>
             </h:form>
-            
+
             <ui:insert name="conteudo">
-               
+
             </ui:insert>
         </b:container>
         <div align="center" 
-                     style="font-size: 20px; color: white; text-transform: uppercase;"> 
-                    <ui:include src="ajaxstatus.xhtml"/>
+             style="font-size: 20px; color: white; text-transform: uppercase;"> 
+            <ui:include src="ajaxstatus.xhtml"/>
 
-                    Todos os Direitos Reservados
+            Todos os Direitos Reservados
         </div>
     </h:body>
-        
-  <!--</f:view> -->
+
+    <!--</f:view> -->
 </html>
 
