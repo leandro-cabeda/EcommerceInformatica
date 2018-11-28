@@ -50,14 +50,14 @@
                     <p:panelGrid columns="2" columnClasses="ui-grid-col-2, ui-grid-col-20" layout="grid" styleClass="ui-panelgrid-blank"
                                  rendered="#{controlePessoa.editandoPerfil}" >
                         <f:facet name="header">
-                            <p:outputLabel value="Edição de Permissão do usuário"/>
+                            <p:outputLabel value="Edição de Perfil da Pessoa"/>
                         </f:facet>
-                        <p:outputLabel value="Permissão" for="selectPerfil"/>
+                        <p:outputLabel value="Perfil" for="selectPerfil"/>
                         <p:selectOneMenu id="selectPerfil" 
                                          value="#{controlePessoa.perfil}" filter="true">
                             <f:selectItem noSelectionOption="true" itemLabel="Selecione um registro"/>
                             <f:selectItems value="#{controlePessoa.daoPerfil.listaTodos}" 
-                                           var="p" itemLabel="#{p.nome}"/>
+                                           var="p" itemLabel="#{p.cargo}"/>
                             <f:converter converterId="converterPerfil"/>                                  
                         </p:selectOneMenu>
                         
@@ -75,19 +75,19 @@
             
              <h:panelGroup id="listagemPerfil">
                     <h:panelGroup rendered="#{!controlePessoa.editandoPerfil}">
-                        <p:commandButton value="Nova Permissão"
+                        <p:commandButton value="Novo Perfil"
                                          icon="ui-icon-plus"
                                          actionListener="#{controlePessoa.novaPerfil()}"
                                          update="listagemPerfil painelPerfil"
                                          process="@this"/>
-                        <p:dataTable value="#{controlePessoa.objeto.permissoes}"
+                        <p:dataTable value="#{controlePessoa.objeto.perfis}"
                                      var="per" reflow="true">
                             <f:facet name="header">
-                                <p:outputLabel value="Perfis da pessoa"/>
+                                <p:outputLabel value="Perfis da Pessoa"/>
                             </f:facet>
 
-                            <p:column headerText="Perfil">
-                                <p:outputLabel value="#{per.nome}"/>
+                            <p:column headerText="Cargo">
+                                <p:outputLabel value="#{per.cargo}"/>
                             </p:column>
                             <p:column headerText="Descrição">
                                 <p:outputLabel value="#{per.descricao}"/>

@@ -8,12 +8,12 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <ui:composition template="/templates/template.xhtml">
-        <ui:define name="titulo">Titulo Pessoa</ui:define>
+        <ui:define name="titulo">Lista Pessoas</ui:define>
         <ui:define name="conteudo">
             <h:form id="formListagem">
                 <h:panelGroup rendered="#{!controlePessoa.editando}">
                     
-                        <p:messages/>
+                        <p:messages id="mess"/>
                         <p:commandButton value="Novo" icon="ui-icon-plus" actionListener="#{controlePessoa.novo()}"
                                          update="formListagem formEdicao"/>
 
@@ -30,14 +30,14 @@
                             </p:column>
 
 
-                            <p:column headerText="Ações" rendered="#{p:ifGranted('ADMINISTRADOR','GERENTE')}">
+                            <p:column headerText="Ações" rendered="#{p:ifAnyGranted('ADMINISTRADOR, GERENTE')}">
                                 <div align="center">
                                     <p:commandButton icon="ui-icon-pencil" actionListener="#{controlePessoa.alterar(obj.nomePessoa)}"
-                                                     process="@this" update="formEdicao formListagem"/>
+                                                     process="@this" update="formEdicao formListagem mess"/>
 
                                     <p:commandButton icon="ui-icon-trash"  actionListener="#{controlePessoa.excluir(obj.nomePessoa)}" 
                                                      process="@this"
-                                                     update="formListagem"
+                                                     update="formListagem mess"
                                                       />
                                 </div>
                             </p:column>

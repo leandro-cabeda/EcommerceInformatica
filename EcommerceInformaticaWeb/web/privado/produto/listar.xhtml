@@ -4,7 +4,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui"
-      >
+          
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     
     <ui:composition template="/templates/template.xhtml">
         <ui:define name="titulo">Lista de Produtos</ui:define>
@@ -23,7 +24,9 @@
                             <p:outputLabel value="#{obj.descricao}"/>
                         </p:column>
                         <p:column headerText="Valor">
-                            <p:outputLabel value="#{obj.valor}"/>
+                            <p:outputLabel value="#{obj.valor}">
+                                <f:convertNumber pattern="R$ 0.00"/>
+                            </p:outputLabel>
                         </p:column>
                         <p:column headerText="Estoque">
                             <p:outputLabel value="#{obj.estoque}"/>
@@ -38,16 +41,24 @@
                         </p:column>
                         
                         <p:column headerText="Promoção" rendered="#{obj.promocao!=null}">
-                            <p:outputLabel value="#{obj.promocao}"/>
+                            <p:outputLabel value="#{obj.promocao}">
+                                <f:convertNumber pattern="R$ 0.00"/>
+                            </p:outputLabel>
                         </p:column>
                         
-                        <p:column headerText="Ações" rendered="#{p:ifGranted('ADMINISTRADOR','GERENTE','FUNCIONARIO')}">
+                        <p:column headerText="Promoção" rendered="#{obj.promocao==null}">
+                            <p:outputLabel value="0.0"/>
+                        </p:column>
+                        
+                        <p:column headerText="Ações">
                             <div align="center">
-                                <p:commandButton actionListener="#{controleProduto.alterar(obj)}" icon="ui-icon-pencil"
-                                                 process="@this" update="formEdicao formListagem" title="Alterar"/>
+                                <p:commandButton actionListener="#{controleProduto.alterar(obj.id)}" icon="ui-icon-pencil"
+                                                 process="@this" update="formEdicao formListagem" title="Alterar"
+                                                 rendered="#{p:ifAnyGranted('ADMINISTRADOR, GERENTE, FUNCIONARIO')}" />
                                 
-                                <p:commandButton actionListener="#{controleProduto.excluir(obj)}" process="@this"
-                                                 update="formListagem" title="Remover" icon="ui-icon-trash"/>
+                                <p:commandButton actionListener="#{controleProduto.excluir(obj.id)}" process="@this"
+                                                 update="formListagem" title="Remover" icon="ui-icon-trash"
+                                                 rendered="#{p:ifAnyGranted('ADMINISTRADOR, GERENTE')}" />
                             </div>
                         </p:column>
                         

@@ -11,11 +11,12 @@
         <ui:define name="conteudo">
                 <h:form>
                     <h1>Seja bem vindo ao Sistema EcommerceInformatica!!!!</h1>
+                    <p:messages id="msgs"/>
                     <p:dataGrid var="prod" value="#{controleProduto.dao.listaTodos}"
-                                columns="4" layout="grid">
+                                columns="3" layout="grid">
                         
                         <br/>
-                        <p:messages id="msgs"/>
+                        
                         <br/>
                         <p:panel style="text-align: center" header="">
                             <h:panelGrid columns="1" style="width: 100%">

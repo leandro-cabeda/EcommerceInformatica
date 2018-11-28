@@ -41,6 +41,8 @@ public class ControleLogin  implements Serializable{
     
      public String voltar()
     {
+        usuario="";
+        senha="";
         return "/login?faces-redirect=true";
     }
     

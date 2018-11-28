@@ -6,8 +6,6 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <!--<f:view encoding="ISO-8859-1" contentType="text/html" locale="#/{controleLocale.currentLocale}">  -->    
-
     <h:head>
         <title><ui:insert name="titulo">EcommerceInformatica</ui:insert></title>
     </h:head>
@@ -17,15 +15,15 @@
                 <b:navBar brand="EcommerceInformatica">
                     <b:navbarLinks>
                         <b:navLink value="Inicio" outcome="Inicio"/>
-                        <b:dropMenu value="Privado" rendered="#{controleLogin.pessoaAutenticado.perfis.containsAll('FUNCIONARIO','GERENTE','ADMINISTRADOR')
-                                                                and controleLogin.pessoaAutenticado!=null }">
+                       
+                        <b:dropMenu value="Privado" rendered="#{p:ifAnyGranted('ADMINISTRADOR, GERENTE, FUNCIONARIO')
+                                                                }">
+                            
                             <b:navCommandLink value="Pessoas" ajax="false" action="#{controlePessoa.listar()}"/>
                             <b:navCommandLink value="Produtos" ajax="false" action="#{controleProduto.listar()}"/>
 
                         </b:dropMenu>
-                        <b:dropMenu value="Publico">
-                            <b:navCommandLink value="Produtos" ajax="false" action="#{controleProduto.listar()}"/>              
-                        </b:dropMenu>
+                           
 
                         <b:dropMenu value="Pessoa: #{controleLogin.pessoaAutenticado!=null ? controleLogin.pessoaAutenticado.nome : 'Efetuar Login'}" >
 
@@ -46,7 +44,7 @@
 
             </ui:insert>
         </b:container>
-        <div align="center" 
+        <div class="ui-fluid" align="center" 
              style="font-size: 20px; color: white; text-transform: uppercase;"> 
             <ui:include src="ajaxstatus.xhtml"/>
 
@@ -54,6 +52,5 @@
         </div>
     </h:body>
 
-    <!--</f:view> -->
 </html>
 
