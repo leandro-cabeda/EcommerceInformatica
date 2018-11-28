@@ -13,7 +13,7 @@
             <h:form id="formListagem">
                 <h:panelGroup rendered="#{!controlePessoa.editando}">
                     
-                        <p:messages id="mess"/>
+                        <p:messages/>
                         <p:commandButton value="Novo" icon="ui-icon-plus" actionListener="#{controlePessoa.novo()}"
                                          update="formListagem formEdicao"/>
 
@@ -33,11 +33,11 @@
                             <p:column headerText="Ações" rendered="#{p:ifAnyGranted('ADMINISTRADOR, GERENTE')}">
                                 <div align="center">
                                     <p:commandButton icon="ui-icon-pencil" actionListener="#{controlePessoa.alterar(obj.nomePessoa)}"
-                                                     process="@this" update="formEdicao formListagem mess"/>
+                                                     process="@this" update="formEdicao formListagem"/>
 
                                     <p:commandButton icon="ui-icon-trash"  actionListener="#{controlePessoa.excluir(obj.nomePessoa)}" 
                                                      process="@this"
-                                                     update="formListagem mess"
+                                                     update="formListagem"
                                                       />
                                 </div>
                             </p:column>

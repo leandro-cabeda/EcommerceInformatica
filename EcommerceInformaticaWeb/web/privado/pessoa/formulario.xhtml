@@ -12,7 +12,7 @@
                 <p:messages id="msgs"/>
                 <p:panelGrid columns="2" columnClasses="ui-grid-col-2, ui-grid-col-20" layout="grid" styleClass="ui-panelgrid-blank">
                     <f:facet name="header">
-                        <p:outputLabel value="Edição de Pessoas"/>
+                        <p:outputLabel value="Pessoa"/>
                     </f:facet>
                     <p:outputLabel value="NomePessoa" for="txtNomePessoa"/>
                     <p:inputText value="#{controlePessoa.objeto.nomePessoa}"
@@ -75,7 +75,7 @@
             
              <h:panelGroup id="listagemPerfil">
                     <h:panelGroup rendered="#{!controlePessoa.editandoPerfil}">
-                        <p:commandButton value="Novo Perfil"
+                        <p:commandButton value="Novo Perfil" rendered="#{p:ifAnyGranted('ADMINISTRADOR')}"
                                          icon="ui-icon-plus"
                                          actionListener="#{controlePessoa.novaPerfil()}"
                                          update="listagemPerfil painelPerfil"
@@ -94,7 +94,7 @@
                             </p:column>
                             <p:column headerText="Ações">
                                 <div align="center">
-                                    <p:commandButton icon="ui-icon-trash"
+                                    <p:commandButton icon="ui-icon-trash" rendered="#{p:ifAnyGranted('ADMINISTRADOR')}"
                                                      actionListener="#{controlePessoa.removerPerfil(per)}"
                                                      process="@this" update="@form"/>
                                 </div>
