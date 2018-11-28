@@ -73,9 +73,9 @@
             </div>
         <br/>
             
-             <h:panelGroup id="listagemPerfil">
+             <h:panelGroup id="listagemPerfil" rendered="#{p:ifAnyGranted('ADMINISTRADOR')}">
                     <h:panelGroup rendered="#{!controlePessoa.editandoPerfil}">
-                        <p:commandButton value="Novo Perfil" rendered="#{p:ifAnyGranted('ADMINISTRADOR')}"
+                        <p:commandButton value="Novo Perfil"
                                          icon="ui-icon-plus"
                                          actionListener="#{controlePessoa.novaPerfil()}"
                                          update="listagemPerfil painelPerfil"
@@ -94,7 +94,7 @@
                             </p:column>
                             <p:column headerText="Ações">
                                 <div align="center">
-                                    <p:commandButton icon="ui-icon-trash" rendered="#{p:ifAnyGranted('ADMINISTRADOR')}"
+                                    <p:commandButton icon="ui-icon-trash"
                                                      actionListener="#{controlePessoa.removerPerfil(per)}"
                                                      process="@this" update="@form"/>
                                 </div>

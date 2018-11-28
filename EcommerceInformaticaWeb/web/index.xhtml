@@ -9,41 +9,43 @@
     <ui:composition template="/templates/template.xhtml">
         <ui:define name="titulo">Publico</ui:define>
         <ui:define name="conteudo">
-                <h:form>
-                    <h1>Seja bem vindo ao Sistema EcommerceInformatica!!!!</h1>
+            <h:form>
+                    <h1>Bem Vindo</h1>
                     <p:messages id="msgs"/>
-                    <p:dataGrid var="prod" value="#{controleProduto.dao.listaTodos}"
-                                columns="3" layout="grid">
-                        
-                        <p:panel style="text-align: center" header="">
-                            <h:panelGrid columns="1" style="width: 100%">
-                                <h:outputText value="#{prod.marca}"/>
-                                <h:outputText value="#{prod.descricao}"/>
-                                
-                                <h:panelGroup rendered="#{prod.promocao==null}">
-                                    <h:outputText style="font-weight:bolder;" value="Valor Normal: #{prod.valor}">
-                                        <f:convertNumber pattern="R$ 0.00"/>
-                                    </h:outputText>
-                                </h:panelGroup>
-                                
-                                <h:panelGroup rendered="#{prod.promocao!=null}">
-                                    <h:outputText style="text-decoration: line-through ;color: lightgray" value="Valor Normal: #{prod.valor}">
-                                        <f:convertNumber pattern="R$ 0.00"/>
-                                    </h:outputText>
-                                    <br/>
-                                    <h:outputText style="font-weight:bolder;" value="Promoção: #{prod.promocao}">
-                                        <f:convertNumber pattern="R$ 0.00"/>
-                                    </h:outputText>
-                                </h:panelGroup>
-                                <h:outputText value="Peso: #{prod.peso}"/>
+                
+                <p:dataGrid var="prod" value="#{controleProduto.dao.listaTodos}"
+                            columns="3" layout="grid">
 
-                                <h:outputText value="Estoque:#{prod.estoque>0? prod.estoque:'Indisponivel!!!'}"/>
-                            </h:panelGrid>
+                    <p:panel style="text-align: center" header="">
+                        <h:panelGrid columns="1" style="width: 100%">
+                            <h:outputText value="#{prod.marca}"/>
+                            <h:outputText value="#{prod.descricao}"/>
 
-                        </p:panel>
+                            <h:panelGroup rendered="#{prod.promocao==null}">
+                                <h:outputText style="font-weight:bolder;" value="Valor Normal: #{prod.valor}">
+                                    <f:convertNumber pattern="R$ 0.00"/>
+                                </h:outputText>
+                            </h:panelGroup>
 
-                    </p:dataGrid>
-                </h:form>
+                            <h:panelGroup rendered="#{prod.promocao!=null}">
+                                <h:outputText style="text-decoration: line-through ;color: lightgray" value="Valor Normal: #{prod.valor}">
+                                    <f:convertNumber pattern="R$ 0.00"/>
+                                </h:outputText>
+                                <br/>
+                                <h:outputText style="font-weight:bolder;" value="Promoção: #{prod.promocao}">
+                                    <f:convertNumber pattern="R$ 0.00"/>
+                                </h:outputText>
+                            </h:panelGroup>
+                            <h:outputText value="Peso: #{prod.peso}"/>
+
+                            <h:outputText value="Estoque:#{prod.estoque>0? prod.estoque:'Indisponivel!!!'}"/>
+                        </h:panelGrid>
+
+                    </p:panel>
+
+                </p:dataGrid>
+                  
+            </h:form>
         </ui:define>
     </ui:composition>
 

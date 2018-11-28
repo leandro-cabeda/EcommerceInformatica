@@ -37,7 +37,7 @@ public class DaoGenerico <TIPO> implements Serializable{
         em.persist(obj);
     }
     
-    @RolesAllowed({"ADMINISTRADOR","GERENTE"})
+
     public void merge(TIPO obj)throws Exception
     {
         em.merge(obj);
