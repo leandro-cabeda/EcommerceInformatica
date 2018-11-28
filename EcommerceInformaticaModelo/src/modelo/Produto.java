@@ -61,7 +61,7 @@ public class Produto implements Serializable {
     
     @NotNull(message="A promocao não pode ser nulo")
     @Min(value = 0,message="A promocao não poder ser abaixo de zero")
-    @Column(name="promocao",columnDefinition ="numeric(10,2)",nullable=false)
+    @Column(name="promocao",columnDefinition ="numeric(10,2)")
     private Double promocao;
     
     
