@@ -11,7 +11,7 @@ import modelo.Produto;
 
 /**
  *
- * @author Leandro
+ * @author Leandro e Marcio da Silva
  */
 @Stateful
 public class ProdutoDAO<TIPO> extends DaoGenerico<Produto> implements Serializable{

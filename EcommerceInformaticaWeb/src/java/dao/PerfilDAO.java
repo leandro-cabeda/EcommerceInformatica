@@ -11,7 +11,7 @@ import modelo.Perfil;
 
 /**
  *
- * @author Leandro
+ * @author Leandro e Marcio da Silva
  */
 @Stateful
 public class PerfilDAO<TIPO> extends DaoGenerico<Perfil> implements Serializable{

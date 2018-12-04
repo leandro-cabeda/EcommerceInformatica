@@ -10,7 +10,7 @@ import javax.faces.context.FacesContext;
 
 /**
  *
- * @author Leandro
+ * @author Leandro e Marcio da Silva
  */
 public class Util{
     public static String getMensagemErro(Exception e)

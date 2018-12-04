@@ -13,7 +13,7 @@ import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author Leandro
+ * @author Leandro e Marcio da Silva
  */
 public class DaoGenerico <TIPO> implements Serializable{
     

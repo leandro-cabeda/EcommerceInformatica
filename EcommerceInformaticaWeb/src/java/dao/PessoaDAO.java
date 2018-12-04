@@ -12,7 +12,7 @@ import modelo.Pessoa;
 
 /**
  *
- * @author Leandro
+ * @author Leandro e Marcio da Silva
  */
 @Stateful
 public class PessoaDAO<TIPO> extends DaoGenerico<Pessoa> implements Serializable{

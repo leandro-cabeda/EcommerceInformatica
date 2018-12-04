@@ -15,7 +15,7 @@ import util.Util;
 
 /**
  *
- * @author Leandro
+ * @author Leandro e Marcio da Silva
  */
 @Named(value = "controleProduto")
 @ViewScoped
